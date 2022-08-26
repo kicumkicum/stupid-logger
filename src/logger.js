@@ -7,27 +7,33 @@ const transports = {
   },
 };
 
-const send = transports.console;
+const createSend = (transports) => (...args) => {
+  Object.values(transports).forEach((send) => {
+    send(...args);
+  });
+};
 
-const createLogger = (moduleName) => {
+const createLogger = ({transports}) => (moduleName) => {
+  const send = createSend(transports);
+
   const log = (...args) => {
     send(moduleName, ...args);
   };
 
   log.info = (...args) => {
-    log('INFO', ...args);
+    send('INFO', moduleName, ...args);
   };
 
   log.warn = (...args) => {
-    log('WARN', ...args);
+    send('WARN', moduleName, ...args);
   };
 
   log.debug = (...args) => {
-    log('DEBUG', ...args);
+    send('DEBUG', moduleName, ...args);
   };
 
   log.error = (...args) => {
-    log('ERROR', ...args);
+    send('ERROR', moduleName, ...args);
   };
 
   return log;
