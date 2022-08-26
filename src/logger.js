@@ -1,12 +1,3 @@
-const transports = {
-  console: (...args) => {
-    console.log(...args);
-  },
-  file: (...args) => {
-    // TODO
-  },
-};
-
 const createSend = (transports) => (...args) => {
   Object.values(transports).forEach((send) => {
     send(...args);
@@ -21,19 +12,26 @@ const createLogger = ({transports}) => (moduleName) => {
   };
 
   log.info = (...args) => {
-    send('INFO', moduleName, ...args);
+    log('INFO', ...args);
   };
 
   log.warn = (...args) => {
-    send('WARN', moduleName, ...args);
+    log('WARN', ...args);
   };
 
   log.debug = (...args) => {
-    send('DEBUG', moduleName, ...args);
+    log('DEBUG', ...args);
   };
 
   log.error = (...args) => {
-    send('ERROR', moduleName, ...args);
+    log('ERROR', ...args);
+  };
+
+  log.call = (func) => (...args) => {
+    const result = func(...args);
+    log(`CALL func with ARGS:`, ...args, `RESULT:`, result);
+
+    return result;
   };
 
   return log;
