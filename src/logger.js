@@ -12,19 +12,19 @@ const createLogger = ({transports}) => (moduleName) => {
   };
 
   log.info = (...args) => {
-    log('INFO', ...args);
+    log(`INFO`, ...args);
   };
 
   log.warn = (...args) => {
-    log('WARN', ...args);
+    log(`WARN`, ...args);
   };
 
   log.debug = (...args) => {
-    log('DEBUG', ...args);
+    log(`DEBUG`, ...args);
   };
 
   log.error = (...args) => {
-    log('ERROR', ...args);
+    log(`ERROR`, ...args);
   };
 
   log.call = (func) => (...args) => {

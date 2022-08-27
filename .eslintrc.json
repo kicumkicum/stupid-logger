@@ -1,0 +1,27 @@
+{
+  "env": {
+    "es6": true,
+    "node": true,
+    "commonjs": true,
+    "jest": true
+  },
+
+  "extends": "google",
+
+  "parserOptions": {
+    "ecmaVersion": 2021,
+    "sourceType": "module"
+  },
+
+  "plugins": ["import"],
+
+  "rules": {
+    "max-nested-callbacks": "warn",
+    "max-len":  ["error", { "code": 120 }],
+    "quotes": ["error", "backtick"],
+    "import/order": ["error", {
+      "alphabetize": {"order": "asc", "caseInsensitive": true},
+      "groups": ["builtin", "external", "parent", "sibling", "index"]
+    }]
+  }
+}

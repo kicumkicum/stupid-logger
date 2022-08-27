@@ -1,7 +1,7 @@
 # TODO
 
-- [ ] Add editorconfig
-- [ ] Add linter
-- [ ] Add jest
-- [ ] Add tests
+- [x] Add editorconfig
+- [x] Add linter
+- [x] Add jest
+- [x] Add tests
 - [ ] Create template repo

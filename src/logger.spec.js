@@ -56,6 +56,6 @@ describe(`logger`, () => {
     const func = (a, b) => b;
 
     log.call(func)({foo: `bar`}, {baz: 42});
-    expect(send).toBeCalledWith(`test.logger`, `CALL func with ARGS:`, {foo: "bar"}, {baz: 42}, `RESULT:`, {baz: 42});
+    expect(send).toBeCalledWith(`test.logger`, `CALL func with ARGS:`, {foo: `bar`}, {baz: 42}, `RESULT:`, {baz: 42});
   });
 });
